@@ -11,9 +11,15 @@ const JSON_FILE_PATH = path.resolve(
   "seed",
   "posts.json",
 );
+const SIMULATED_DELAY_MS = 0;
 
 export class JsonPostRepository implements PostRepository {
+  private async simulateDelay(): Promise<void> {
+    if (SIMULATED_DELAY_MS <= 0) return;
+    await new Promise((resolve) => setTimeout(resolve, SIMULATED_DELAY_MS));
+  }
   private async readFromDisk(): Promise<PostModel[]> {
+    await this.simulateDelay();
     const data = await fs.promises.readFile(JSON_FILE_PATH, "utf-8");
     const parsedJson = JSON.parse(data);
     const { posts } = parsedJson;
