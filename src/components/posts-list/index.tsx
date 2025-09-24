@@ -1,6 +1,4 @@
 import { findAllPublicPosts } from "@/lib/posts/queries";
-import { formatDate, formatDistanceToNow } from "@/utils/format-datetime";
-import { PostHeading } from "../post-heading";
 import { PostImageCover } from "../post-image-cover";
 import { PostSummary } from "../post-summary";
 
